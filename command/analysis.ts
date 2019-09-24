@@ -16,7 +16,6 @@ class AnalysisCommand extends Command {
   async run(context) {
     const { cwd, env, argv } = context;
     const { workspace, gitHead } = argv;
-
     const commits = await analysisCommit({
       env,
       cwd: path.isAbsolute(workspace) ? workspace : path.resolve(cwd, workspace),
