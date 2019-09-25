@@ -6,7 +6,6 @@ class MainCommand extends BaseCommand {
     super(rawArgv);
 
     // load command
-    console.log(__dirname);
     this.load(path.join(__dirname, 'command'));
   }
 }

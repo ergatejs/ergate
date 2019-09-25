@@ -15,6 +15,6 @@ describe('analysis.test.ts', () => {
       .debug();
 
     await proc.end();
-    expect(proc.stdout).toContain('[info]');
+    expect(proc.stdout).toContain('[log]');
   });
 });
