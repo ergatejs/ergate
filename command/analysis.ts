@@ -15,13 +15,14 @@ class AnalysisCommand extends Command {
       type: {
         type: 'string',
         description: 'output type, default markdown',
+        default: 'console',
       },
     };
   }
 
   async run(context) {
     const { cwd, env, argv } = context;
-    const { workspace, head: gitHead, type: outputType = 'console' } = argv;
+    const { workspace, head: gitHead, type: outputType } = argv;
 
     const pkgPath = path.join(cwd, 'package.json');
     const pkgJson = fs.existsSync(pkgPath) && require(pkgPath) || {};
@@ -75,7 +76,7 @@ class AnalysisCommand extends Command {
         features,
       };
 
-      commits.forEach(({ message }) => {
+      commits.forEach(({ subject: message }) => {
         if (message.indexOf('fix') === 0) {
           fixes.push(message);
           return;
@@ -116,7 +117,7 @@ class AnalysisCommand extends Command {
       const repo = pkgJson.repository && parserGithubUrl(pkgJson.repository.url || pkgJson.repository.url).repo || '';
       const commitList = commits
         .filter(c => !c.message.includes('chore(release)'))
-        .map(({ commit, author, message }) => {
+        .map(({ commit, author, subject: message }) => {
           const commitUrl = repo ? `http://github.com/${repo}/commit/${commit.long}` : commit.long;
           return `* [[\`${commit.short}\`](${commitUrl})] - ${message} (${author.name} <<${author.email}>>)`;
         });
