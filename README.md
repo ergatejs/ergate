@@ -12,3 +12,14 @@
 [npm-url]: https://www.npmjs.com/package/@ergatejs/ergate
 
 > Core Tools For Ergatejs.
+
+## Usage
+
+```bash
+npm i -g @ergatejs/ergate
+```
+
+## Status
+
+![](https://github.com/ergatejs/ergate/workflows/Continuous-integration/badge.svg)
+![](https://github.com/ergatejs/ergate/workflows/Semantic-Release/badge.svg)
