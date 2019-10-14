@@ -54,6 +54,7 @@
       "^.+\\.ts?$": "ts-jest"
     },
     "collectCoverage": false,
+    "coverageReporters": ["json", "lcov", "text"],
     "testMatch": [
       "**/__tests__/**/*.[j]s",
       "**/?(*.)+(spec|test).[j]s"
